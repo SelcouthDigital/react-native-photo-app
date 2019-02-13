@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "allowImportExportEverywhere": false,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react"],
+  "rules": {
+    "no-debugger": 0,
+    "import/no-named-as-default": 0,
+    "no-unused-vars": 1,
+    "quotes": [2, "single"],
+    "class-methods-use-this": 0,
+    "no-console": 0,
+    "no-return-assign": 1,
+    "semi": ["error", "never"]
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}
