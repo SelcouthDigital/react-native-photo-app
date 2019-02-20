@@ -10,6 +10,14 @@
     "test": "node ./node_modules/jest/bin/jest.js",
     "test:watch": "node ./node_modules/jest/bin/jest.js --watchAll"
   },
+  "lint-staged": {
+    "linters": {
+      "*.{js,json,css}": [
+        "prettier --no-semi false --single-quote --trailing-comma none --write",
+        "git add"
+      ]
+    }
+  },
   "jest": {
     "preset": "jest-expo"
   },
@@ -27,10 +35,13 @@
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-config-prettier": "^3.4.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "7.12.3",
     "expo-cli": "^2.9.0",
+    "prettier": "1.15.3",
     "jest-expo": "^31.0.0"
   }
 }
