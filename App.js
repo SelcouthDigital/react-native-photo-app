@@ -7,6 +7,10 @@ import AppNavigator from './src/navigation/AppNavigator'
 
 import { ASSETS, FONTS } from './src/constants'
 
+import firebaseInit from './src/lib/inits/firebase'
+
+firebaseInit()
+
 export default class App extends React.Component {
   static propTypes = {
     skipLoadingScreen: PropTypes.bool

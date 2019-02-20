@@ -24,9 +24,11 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-inline-dotenv": "^1.2.1",
     "eslint": "^4.19.1",
     "eslint-plugin-react-native": "^3.6.0",
     "expo": "^31.0.2",
+    "firebase": "^5.8.3",
     "prop-types": "^15.7.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
@@ -41,7 +43,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "7.12.3",
     "expo-cli": "^2.9.0",
-    "prettier": "1.15.3",
-    "jest-expo": "^31.0.0"
+    "jest-expo": "^31.0.0",
+    "prettier": "1.15.3"
   }
 }
