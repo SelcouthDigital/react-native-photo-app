@@ -1,7 +1,7 @@
-import { UPDATE_TIMESTAMP } from '../types'
+import types from './types'
 
 const updateTimestamp = (timestamp = new Date()) => ({
-  type: UPDATE_TIMESTAMP,
+  type: types.UPDATE_TIMESTAMP,
   payload: timestamp
 })
 

@@ -1,0 +1,5 @@
+const UPDATE_TIMESTAMP = 'UPDATE_TIMESTAMP'
+
+export default {
+  UPDATE_TIMESTAMP
+}

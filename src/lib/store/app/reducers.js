@@ -1,15 +1,15 @@
-import { UPDATE_TIMESTAMP } from '../types'
+import types from './types'
 
 const initialState = {
   timestamp: new Date(),
   updated: false
 }
 
-const rootReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
   const { payload, type } = action
 
   switch (type) {
-    case UPDATE_TIMESTAMP:
+    case types.UPDATE_TIMESTAMP:
       return {
         ...state,
         timestamp: payload,
@@ -20,4 +20,4 @@ const rootReducer = (state = initialState, action) => {
   }
 }
 
-export default rootReducer
+export default appReducer

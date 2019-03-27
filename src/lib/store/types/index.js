@@ -1,1 +1,0 @@
-export const UPDATE_TIMESTAMP = 'UPDATE_TIMESTAMP'

@@ -17,7 +17,8 @@ import MonoText from '../components/StyledText'
 
 import { isDev } from '../lib/utils'
 
-import RootActions from '../lib/store/actions'
+import AppActions from '../lib/store/app/actions'
+import AuthActions from '../lib/store/auth/actions'
 
 class HomeScreen extends PureComponent {
   static navigationOptions = {
@@ -25,7 +26,8 @@ class HomeScreen extends PureComponent {
   }
 
   static propTypes = {
-    updateTimestamp: PropTypes.func.isRequired
+    updateTimestamp: PropTypes.func.isRequired,
+    updateUser: PropTypes.func.isRequired
   }
 
   componentDidMount = () => {
@@ -43,6 +45,22 @@ class HomeScreen extends PureComponent {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     )
+  }
+
+  updateUser = async () => {
+    const { updateUser } = this.props
+    console.log(updateUser)
+    try {
+      const userData = {
+        userId: 123456,
+        name: 'Simon',
+        email: 'simon@selcouth.digital'
+      }
+      const response = await updateUser(userData)
+      console.log(response)
+    } catch (err) {
+      console.warn(err)
+    }
   }
 
   maybeRenderDevelopmentModeWarning() {
@@ -110,7 +128,7 @@ class HomeScreen extends PureComponent {
               onPress={this.handleHelpPress}
               style={styles.helpLink}
             >
-              <Text style={styles.helpLinkText}>
+              <Text style={styles.helpLinkText} onPress={this.updateUser}>
                 Help, it didn’t automatically reload!
               </Text>
             </TouchableOpacity>
@@ -225,12 +243,13 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => ({
-  timestamp: state.timestamp
+  timestamp: state.app.timestamp
 })
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      updateTimestamp: RootActions.updateTimestamp
+      updateTimestamp: AppActions.updateTimestamp,
+      updateUser: AuthActions.updateUser
     },
     dispatch
   )

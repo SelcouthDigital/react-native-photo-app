@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 
 import firebaseInit from './src/lib/inits/firebase'
 
-import store from './src/lib/store'
+import store from './src/lib/store/createStore'
 import AppNavigator from './src/navigation/AppNavigator'
 
 import { ASSETS, FONTS } from './src/constants'
