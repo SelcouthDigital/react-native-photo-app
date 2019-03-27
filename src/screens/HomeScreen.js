@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import {
   Image,
   Platform,
@@ -8,15 +8,29 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
+import PropTypes from 'prop-types'
 import { WebBrowser } from 'expo'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import MonoText from '../components/StyledText'
 
 import { isDev } from '../lib/utils'
 
-export default class HomeScreen extends React.Component {
+import RootActions from '../lib/store/actions'
+
+class HomeScreen extends PureComponent {
   static navigationOptions = {
     header: null
+  }
+
+  static propTypes = {
+    updateTimestamp: PropTypes.func.isRequired
+  }
+
+  componentDidMount = () => {
+    const { updateTimestamp } = this.props
+    updateTimestamp()
   }
 
   handleLearnMorePress = () => {
@@ -209,3 +223,19 @@ const styles = StyleSheet.create({
     color: '#2e78b7'
   }
 })
+
+const mapStateToProps = state => ({
+  timestamp: state.timestamp
+})
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      updateTimestamp: RootActions.updateTimestamp
+    },
+    dispatch
+  )
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeScreen)

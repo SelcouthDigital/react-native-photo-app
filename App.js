@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 import { AppLoading, Asset, Font, Icon } from 'expo'
 import PropTypes from 'prop-types'
+import { Provider } from 'react-redux'
 
+import firebaseInit from './src/lib/inits/firebase'
+
+import store from './src/lib/store'
 import AppNavigator from './src/navigation/AppNavigator'
 
 import { ASSETS, FONTS } from './src/constants'
 
-import firebaseInit from './src/lib/inits/firebase'
-
 firebaseInit()
 
-export default class App extends React.Component {
+export default class App extends PureComponent {
   static propTypes = {
     skipLoadingScreen: PropTypes.bool
   }
@@ -56,10 +58,12 @@ export default class App extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <AppNavigator />
+        </View>
+      </Provider>
     )
   }
 }
