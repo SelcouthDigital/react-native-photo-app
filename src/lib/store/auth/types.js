@@ -1,8 +1,10 @@
+const REGISTER = 'REGISTER'
 const LOGIN = 'LOGIN'
 const LOGOUT = 'LOGOUT'
 const UPDATE_USER = 'UPDATE_USER'
 
 export default {
+  REGISTER,
   LOGIN,
   LOGOUT,
   UPDATE_USER

@@ -1,14 +1,6 @@
 import React, { PureComponent } from 'react'
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import PropTypes from 'prop-types'
-import { WebBrowser } from 'expo'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
@@ -16,11 +8,9 @@ import {
   ImageActionSheet
 } from '@selcouth-digital/react-native-lego-blocks'
 
-import { isDev } from '../lib/utils'
-
-import AppActions from '../lib/store/app/actions'
-import AuthActions from '../lib/store/auth/actions'
-import MediaAssetsActions from '../lib/store/media-assets/actions'
+import AppActions from '../../lib/store/app/actions'
+import AuthActions from '../../lib/store/auth/actions'
+import MediaAssetsActions from '../../lib/store/media-assets/actions'
 
 class HomeScreen extends PureComponent {
   static navigationOptions = {
@@ -81,11 +71,7 @@ class HomeScreen extends PureComponent {
         >
           <View style={s.welcomeContainer}>
             <Image
-              source={
-                isDev
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
+              source={require('../../assets/images/robot-dev.png')}
               style={s.welcomeImage}
             />
           </View>

@@ -1,8 +1,25 @@
 import * as firebase from 'firebase'
 
-import types from '../app/types'
+import types from './types'
 
-const login = ({ username, password }) => ({
+const register = ({ email, password }) => async () => {
+  try {
+    const response = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+    return {
+      type: types.REGISTER,
+      payload: response
+    }
+  } catch (err) {
+    return {
+      type: `${types.REGISTER}_REJECTED`,
+      payload: err
+    }
+  }
+}
+
+const login = ({ email, password }) => ({
   type: types.LOGIN,
   payload: firebase.auth().onAuthStateChanged(user => {
     if (user != null) {
@@ -18,29 +35,8 @@ const logout = user => ({
   payload: user
 })
 
-const updateUser = async ({ userId, name, email }) => {
-  try {
-    const response = await firebase
-      .database()
-      .ref(`users/${userId}`)
-      .set({
-        username: name,
-        email
-      })
-    return {
-      type: types.UPDATE_USER,
-      payload: response
-    }
-  } catch (err) {
-    return {
-      type: `${types.UPDATE_USER}_REJECTED`,
-      payload: err
-    }
-  }
-}
-
 export default {
+  register,
   login,
-  logout,
-  updateUser
+  logout
 }

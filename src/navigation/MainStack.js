@@ -5,10 +5,13 @@ import {
   createBottomTabNavigator
 } from 'react-navigation'
 
+// authenticated stack
+// user is signed in
+import HomeScreen from '../screens/authenticated/HomeScreen'
+import LinksScreen from '../screens/authenticated/LinksScreen'
+import SettingsScreen from '../screens/authenticated/SettingsScreen'
+
 import TabBarIcon from '../components/TabBarIcon'
-import HomeScreen from '../screens/HomeScreen'
-import LinksScreen from '../screens/LinksScreen'
-import SettingsScreen from '../screens/SettingsScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
